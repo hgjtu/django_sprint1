@@ -42,64 +42,22 @@
       <div class="container py-5">
         <h1>Лента записей</h1>                        
         <!-- Перебираем в цикле все посты -->
+        {% for post in posts %}
         <hr>
-        <article>
           <ul>
             <li>
-              Место: Остров отчаянья              
+              <p>Место: {{ post.location }}</p>
             </li>
             <li>
-              Дата: 25 октября 1659 года
+              <p>Дата: {{ post.date }}</p>
             </li>
             <li>
-              Категория: <a href="not-my-day">not-my-day</a>
-            </li>
-          </ul>          
-          <!-- Первые 10 слов -->
-          <p>
-            Всю ночь и весь день шел дождь и дул сильный ...
-          </p>
-          <a href="detail.html">Читать полный текст</a>
-        </article>
-        <hr>
-        <article>
-          <ul>
-            <li>
-              Место: Остров отчаянья              
-            </li>
-            <li>
-              Дата: 1 октября 1659 года
-            </li>
-            <li>
-              Категория: <a href="not-my-day">not-my-day</a>
+              <p>Категория: <a href='{% url "category_detail" post.category %}'>{{ post.category }}</a></p>
             </li>
           </ul>
-          <!-- Первые 10 слов -->
-          <p>
-            Проснувшись поутру, я увидел, что наш корабль сняло с мели ...
-          </p>
-          <a href="detail.html">Читать полный текст</a>
-        </article>
-        <hr>
-        <article>
-          <ul>
-            <li>
-              Место: Остров отчаянья              
-            </li>
-            <li>
-              Дата: 30 сентября 1659 года.
-            </li>
-            <li>
-              Категория: <a href="travel">travel</a>
-            </li>
-          </ul>
-          <!-- Первые 10 слов -->
-          <p>
-            Наш корабль, застигнутый в открытом море страшным штормом, потерпел крушение. ...
-          </p>
-          <a href="detail.html">Читать полный текст</a>
-        </article>                 
-      </div>
+          <p>{{ post.text|truncatewords:10 }}</p>
+          <a href='{% url "post_detail" post.id %}'>Читать полный текст</a>
+        {% endfor %} 
     </main>
     <footer class="border-top text-center py-3">
       <p>© Блогикум</p>    
