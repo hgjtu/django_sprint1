@@ -47,12 +47,17 @@ posts = [
 
 
 def index(request):
-    return HttpResponse('Блог')
+    template = 'blog/index.html'
+    return render(request, template)
 
 
-def post_detail(request, post_id):
-    return HttpResponse(f'Пост номер {post_id}')
+def post_detail(request, id):
+    template = 'blog/detail.html'
+    context = {'post': posts[id]}
+    return render(request, template, context)
 
 
-def category_posts(request, category):
-    return HttpResponse(f'Категория: {category}')
+def category_posts(request, category_slug):
+    template = 'blog/category.html'
+    context = {'category_slug': category_slug}
+    return render(request, template, context)

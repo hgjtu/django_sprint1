@@ -5,8 +5,10 @@ from django.http import HttpResponse
 
 
 def about(request):
-    return HttpResponse('Страничка about')
+    template = 'pages/about.html'
+    return render(request, template)
 
 
 def rules(request):
-    return HttpResponse('Страничка rules')
+    template = 'pages/rules.html'
+    return render(request, template)
