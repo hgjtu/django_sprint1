@@ -16,7 +16,7 @@
           <p>Дата: {{ post.date }}</p>
         </li>
         <li>
-          <p>Категория: <a href='{% url "blog:category_detail" post.category %}'>{{ post.category }}</a></p>
+          <p>Категория: <a href='{% url "blog:category_posts" post.category %}'>{{ post.category }}</a></p>
         </li>
       </ul>        
       <p>{{ post.text }}</p>    
